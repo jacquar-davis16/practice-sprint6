@@ -24,13 +24,13 @@ variable "securityGroupName" {
 
 #input your ip address so that you can ssh into the ec2 insance
 variable "ipAddresses" {
-  type    = list
+  type    = list(any)
   default = ["184.57.36.105/32", "23.120.103.1/32"]
 }
 # input name of your userdatafile
 variable "userData" {
   type    = string
-  default = "TestfileName"
+  default = "jenkinsScript.sh"
 }
 /*
 variable "keyContent" {
@@ -39,6 +39,6 @@ variable "keyContent" {
 }
 */
 variable "targetRegion" {
-  type = string
+  type    = string
   default = "us-east-1"
 }

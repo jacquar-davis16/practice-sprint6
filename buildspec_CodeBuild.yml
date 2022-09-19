@@ -31,3 +31,4 @@ phases:
 artifacts:
   files:
     - api/target/webApp.war
+    - api/README.md

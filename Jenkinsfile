@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Testing push trigger' //awsCodeBuild credentialsType: 'keys', projectName: 'DDs-CodeBuild-Project', region: 'us-east-1', sourceControlType: 'project'
+               awsCodeBuild credentialsType: 'keys', projectName: 'DDs-CodeBuild-Project', region: 'us-east-1', sourceControlType: 'project'
                echo 'This is the build stage.'
             }
         }

@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-
+                awsCodeBuild credentialsType: 'keys', projectName: 'DDs-CodeBuild-Project', region: 'eu-east-1', sourceControlType: 'project'
                echo 'This is the build stage.'
             }
         }

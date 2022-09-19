@@ -38,7 +38,8 @@ resource "aws_security_group" "securityGroup" {
     to_port   = 0
     protocol  = -1
     # variable of our ip address
-    cidr_blocks = var.ipAddresses
+    cidr_blocks = var.ipAddresses.*
+    //description = var.ipAddresses.0
   }
 
   egress {
@@ -62,36 +63,36 @@ resource "aws_instance" "jenkins_server" {
   }
   # need to create a security group
   security_groups = ["${var.securityGroupName}-securityGroup"]
-  #user_data = file(var.fileName)
+  user_data = file(var.userData)
 }
 
 resource "aws_key_pair" "awsKeyPair" {
   key_name   = var.keyName
-  public_key = "${file("${path.cwd}/public_DD_KeyPair.txt")}"
+  public_key = file("${path.cwd}/public_DD_KeyPair.txt")
 }
 
 data "aws_ami" "latestUbuntu" {
 
   most_recent = true
-  owners = ["099720109477"]
-  
+  owners      = ["099720109477"]
+
   filter {
-    
+
     name   = "virtualization-type"
-        values = ["hvm"]
+    values = ["hvm"]
 
   }
 
   filter {
-    
+
     name   = "root-device-type"
     values = ["ebs"]
 
   }
 
   filter {
-    
-    name = "name"
+
+    name   = "name"
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
 
   }

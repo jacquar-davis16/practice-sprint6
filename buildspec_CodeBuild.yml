@@ -20,6 +20,9 @@ phases:
   build:
     commands:
       - echo Build started on `date`
+      - echo Path is `pwd`
+      - cd ..
+      - echo Path is now `pwd` ?????
       - cd api/
       - mvn package
   post_build:
@@ -27,4 +30,4 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/messageUtil-1.0.jar
+    - api/target/webApp.war

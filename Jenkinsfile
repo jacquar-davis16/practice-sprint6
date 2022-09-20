@@ -24,7 +24,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-               sh 'aws deploy create-deployment --application-name test_app --s3-location bucket=dd-bucket-testbuild-091622-2,bundleType=zip,key=output-here --deployment-group-name test-deployment_group --region us-east-1'
+               sh 'aws deploy create-deployment --application-name test_DeployApp --s3-location bucket=dd-bucket-testbuild-092022,bundleType=zip,key=output-here --deployment-group-name test_DeploymentGroup --region us-east-1'
                echo 'This is the deploy stage.'
             }
         }

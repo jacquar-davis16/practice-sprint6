@@ -54,16 +54,17 @@ resource "aws_security_group" "securityGroup" {
 # our ec2 instance to host jenkins
 resource "aws_instance" "jenkins_server" {
   # We will want to fix this later so it is not hardcoded
-  instance_type = "t2.micro"
-  ami           = data.aws_ami.latestUbuntu.id
-  key_name      = var.keyName
+  instance_type        = "t2.micro"
+  ami                  = data.aws_ami.latestUbuntu.id
+  key_name             = var.keyName
+  iam_instance_profile = aws_iam_instance_profile.ec2_jenkins_profile.name
 
   tags = {
     Name = var.yourNameTag
   }
   # need to create a security group
   security_groups = ["${var.securityGroupName}-securityGroup"]
-  user_data = file(var.userData)
+  user_data       = file(var.userData)
 }
 
 resource "aws_key_pair" "awsKeyPair" {

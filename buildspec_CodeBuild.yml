@@ -32,3 +32,5 @@ artifacts:
   files:
     - api/target/webApp.war
     - api/README.md
+    - api/appspec.yml
+    - api/scripts/

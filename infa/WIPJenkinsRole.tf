@@ -69,6 +69,17 @@ resource "aws_iam_policy" "jenkinsPolicy" {
                 "codebuild:*"
             ],
             "Resource": "*"
+        },
+        {
+            "Action": [
+            "codedeploy:Batch*",
+            "codedeploy:CreateDeployment",
+            "codedeploy:Get*",
+            "codedeploy:List*",
+            "codedeploy:RegisterApplicationRevision"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
         }
     ]
 }

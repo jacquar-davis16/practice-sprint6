@@ -82,15 +82,16 @@ resource "aws_codebuild_project" "codeBuildProject" {
 
   artifacts {
     type      = "S3"
-    packaging = "NONE"
+    packaging = "ZIP"
     location  = aws_s3_bucket.codeBuildBucket.bucket
+    name      = "output-here"
   }
 
   source {
     buildspec = "buildspec_CodeBuild.yml"
 
     type            = "GITHUB"
-    location        = "https://github.com/jacquar-davis16/practice-sprint6"
+    location        = "https://github.com/jacquar-davis16/practice-sprint6.git"
     git_clone_depth = 1
   }
 
@@ -109,11 +110,13 @@ resource "aws_codebuild_project" "codeBuildProject" {
     }
   }
 
+  source_version = "dev"
+
 
 }
 
 
-resource "aws_codebuild_webhook" "webHook" {
+/*resource "aws_codebuild_webhook" "webHook" {
 
   project_name = aws_codebuild_project.codeBuildProject.name
   build_type   = "BUILD"
@@ -137,4 +140,4 @@ resource "aws_codebuild_webhook" "webHook" {
 
 }
 
-
+*/

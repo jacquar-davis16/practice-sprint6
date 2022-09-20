@@ -42,3 +42,8 @@ variable "targetRegion" {
   type    = string
   default = "us-east-1"
 }
+
+variable "tomcatData" {
+  type    = string
+  default = "ec2Deploy.sh"
+}

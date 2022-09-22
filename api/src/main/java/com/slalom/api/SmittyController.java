@@ -14,7 +14,7 @@ public class SmittyController {
 
     @GetMapping("/smitty")
     //test this via http://localhost:8080/smitty and http://localhost:8080/smitty?name=Kesha
-    public SmittyContainer smitty(@RequestParam(value = "name", defaultValue = "Bryse") String name) {
+    public SmittyContainer smitty(@RequestParam(value = "name", defaultValue = "Maya") String name) {
         if (name.equalsIgnoreCase("smitty"))
             return new SmittyContainer(counter.incrementAndGet(), String.format(template, name), "https://i.kym-cdn.com/photos/images/original/000/933/502/92b.gif");
         else
